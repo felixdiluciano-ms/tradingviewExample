@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta TradingView - Soluciones de Gráficos Financieros</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2962ff 0%, #1848cc 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        h2 {
+            color: #2962ff;
+            border-bottom: 3px solid #2962ff;
+            padding-bottom: 10px;
+            margin: 40px 0 20px 0;
+            font-size: 2em;
+        }
+        
+        h3 {
+            color: #1848cc;
+            margin: 30px 0 15px 0;
+            font-size: 1.5em;
+        }
+        
+        h4 {
+            color: #555;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        .solution-card {
+            background: #f9f9f9;
+            border-left: 5px solid #2962ff;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .solution-card h3 {
+            margin-top: 0;
+            color: #2962ff;
+        }
+        
+        .features {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .features ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .features li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+        
+        .docs-links {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .docs-links a {
+            color: #2962ff;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 20px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        
+        .docs-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .screenshot-placeholder {
+            background: #f0f0f0;
+            border: 2px dashed #ccc;
+            padding: 40px;
+            text-align: center;
+            color: #999;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-style: italic;
+        }
+        
+        .code-block {
+            background: #263238;
+            color: #aed581;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        .widget-example {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: #2962ff;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .competitor-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .competitor-card h3 {
+            color: #2962ff;
+            margin-top: 0;
+        }
+        
+        .phase-card {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .phase-card h4 {
+            color: #4caf50;
+            margin-top: 0;
+        }
+        
+        .cost-section {
+            background: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .next-steps {
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .next-steps ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .next-steps li {
+            margin: 10px 0;
+            font-weight: 500;
+        }
+        
+        .contact-section {
+            background: #e3f2fd;
+            padding: 25px;
+            border-radius: 5px;
+            margin: 30px 0;
+        }
+        
+        .contact-section a {
+            color: #2962ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            .code-block {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Propuesta de Implementación: TradingView</h1>
+        </header>
+        
+        <div class="content">
+            <h2>1. Soluciones TradingView: Overview de Productos</h2>
+            <p>TradingView ofrece tres soluciones principales para integrar gráficos y datos financieros en plataformas web, cada una con diferentes niveles de complejidad y funcionalidad.</p>
+            
+            <div class="solution-card">
+                <h3>1.1 Lightweight Charts</h3>
+                
+                <h4>¿Qué es?</h4>
+                <p>Lightweight Charts es una biblioteca JavaScript de código abierto diseñada para crear gráficos financieros rápidos y eficientes con un enfoque minimalista.</p>
+                
+                <div class="features">
+                    <h4>Características principales:</h4>
+                    <ul>
+                        <li>Biblioteca ultra liviana (~50KB comprimida)</li>
+                        <li>Renderizado de alto rendimiento para grandes volúmenes de datos</li>
+                        <li>Gráficos de velas, líneas, áreas, histogramas y barras</li>
+                        <li>Personalización completa de estilos y colores</li>
+                        <li>No requiere licencia comercial</li>
+                        <li>Control total sobre la implementación</li>
+                    </ul>
+                </div>
+                
+                <div class="features">
+                    <h4>Casos de uso ideales:</h4>
+                    <ul>
+                        <li>Dashboards financieros simples</li>
+                        <li>Visualización de precios en tiempo real</li>
+                        <li>Aplicaciones móviles que requieren rendimiento óptimo</li>
+                        <li>Integraciones personalizadas donde se necesita control total del código</li>
+                    </ul>
+                </div>
+                
+                <div class="docs-links">
+                    <strong>Documentación oficial:</strong><br>
+                    <a href="https://www.tradingview.com/lightweight-charts/" target="_blank">📚 Lightweight Charts - Documentación y Ejemplos</a>
+                </div>
+                
+                <h4>Ejemplos de Lightweight Charts:</h4>
+                
+                <div class="features" style="background: #e3f2fd; border-left: 5px solid #2196f3;">
+                    <h4>💡 Nota sobre Lightweight Charts:</h4>
+                    <p>Lightweight Charts requiere <strong>implementación programática con tus propios datos</strong>. A diferencia de los widgets embebidos, no hay versión plug-and-play directa en HTML puro.</p>
+                    
+                    <p><strong>Opciones de implementación:</strong></p>
+                    <ul>
+                        <li><strong>Opción 1:</strong> Usar en proyectos con build system (React, Vue, Angular)</li>
+                        <li><strong>Opción 2:</strong> Cargar desde CDN y programar la lógica de datos en JavaScript</li>
+                        <li><strong>Opción 3:</strong> Para demos rápidos, usar los widgets de TradingView (mostrados abajo)</li>
+                    </ul>
+                    
+                    <p><strong>📚 Ejemplos funcionales oficiales:</strong></p>
+                    <ul>
+                        <li><a href="https://tradingview.github.io/lightweight-charts/tutorials/demos/range-switcher" target="_blank">Range Switcher Demo (con botones 1D/1W/1M/1Y)</a></li>
+                        <li><a href="https://tradingview.github.io/lightweight-charts/tutorials/demos/compare-multiple-series" target="_blank">Compare Multiple Series Demo</a></li>
+                        <li><a href="https://tradingview.github.io/lightweight-charts/tutorials/demos/realtime-updates" target="_blank">Realtime Updates Demo</a></li>
+                        <li><a href="https://codesandbox.io/s/9inkb" target="_blank">CodeSandbox - Lightweight Charts Playground</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="solution-card">
+                <h3>1.2 Advanced Charts (Charting Library)</h3>
+                
+                <h4>¿Qué es?</h4>
+                <p>Advanced Charts Library (también conocido como Charting Library) es una <strong>librería JavaScript profesional</strong> que se integra en tu aplicación. A diferencia de los widgets, esta librería requiere que implementes tu propia conexión de datos (Datafeed API) y <strong>NO incluye datos de mercado</strong> - debes proveerlos tú.</p>
+                
+                <div class="features">
+                    <h4>Características principales:</h4>
+                    <ul>
+                        <li>Más de 100 indicadores técnicos predefinidos</li>
+                        <li>Herramientas de dibujo profesionales (líneas de tendencia, Fibonacci, patrones, etc.)</li>
+                        <li>Sistema de alertas integrado</li>
+                        <li>Múltiples tipos de gráficos (Heikin Ashi, Renko, Point & Figure, etc.)</li>
+                        <li>Capacidad de guardar plantillas y layouts</li>
+                        <li>Interfaz completamente personalizable</li>
+                        <li>Soporte multi-timeframe y multi-símbolo</li>
+                        <li>Comparación entre activos</li>
+                        <li>Reproducción histórica (replay mode)</li>
+                    </ul>
+                </div>
+                
+                <div class="features">
+                    <h4>Casos de uso ideales:</h4>
+                    <ul>
+                        <li>Plataformas de trading profesional</li>
+                        <li>Banca de inversión y wealth management</li>
+                        <li>Brokers que necesitan herramientas de análisis técnico completas</li>
+                        <li>Aplicaciones que requieren todas las funcionalidades de TradingView</li>
+                    </ul>
+                </div>
+                
+                <div class="features">
+                    <h4>Requisitos técnicos:</h4>
+                    <ul>
+                        <li><strong>Licencia comercial:</strong> Tiene costo por año</li>
+                        <li><strong>Implementación de Datafeed API:</strong> Debes programar cómo se conecta a tus datos</li>
+                        <li><strong>Backend/API propio:</strong> NO incluye datos - debes proveerlos o conectar a un proveedor</li>
+                        <li><strong>Servidor web:</strong> Para alojar la librería y tu aplicación</li>
+                    </ul>
+                </div>
+                
+                <div class="docs-links">
+                    <strong>Documentación oficial:</strong><br>
+                    <a href="https://www.tradingview.com/advanced-charts/" target="_blank">📈 Advanced Charts - Información y Demos</a>
+                </div>
+                
+                <div class="features" style="background: #fff8e1; border-left: 5px solid #ff9800; margin-top: 20px;">
+                    <h4>⚠️ Nota Importante:</h4>
+                    <p><strong>Advanced Charts Library ≠ Advanced Chart Widget</strong></p>
+                    <ul>
+                        <li><strong>La librería completa</strong> requiere implementar tu propia Datafeed API y NO incluye datos</li>
+                        <li><strong>El widget embebido</strong> (mostrado abajo) SÍ incluye datos de TradingView y es plug-and-play</li>
+                        <li>Los ejemplos siguientes usan el <strong>widget</strong> para mostrar cómo se ve visualmente</li>
+                    </ul>
+                </div>
+                
+                <h4>Ejemplo Visual (usando Advanced Chart Widget):</h4>
+                <p><em>Este es un widget embebido que muestra cómo se vería la librería. La implementación real de Advanced Charts Library requiere desarrollo backend completo.</em></p>
+                
+                <div class="widget-example">
+                    <strong>Gráfico de demostración - Acciones Argentinas</strong>
+                    <p>Vista previa con datos reales de TradingView (en la librería real, usarías TUS propios datos).</p>
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container" style="height:500px">
+                      <div id="tradingview_advanced_chart_2" style="height:100%"></div>
+                    </div>
+                    <!-- TradingView Widget END -->
+                </div>
+            </div>
+            
+            <div class="solution-card">
+                <h3>1.3 Widgets</h3>
+                
+                <h4>¿Qué son?</h4>
+                <p>Los Widgets de TradingView son componentes embebibles listos para usar que se pueden integrar con pocas líneas de código HTML/JavaScript.</p>
+                
+                <div class="features">
+                    <h4>Características principales:</h4>
+                    <ul>
+                        <li>Implementación inmediata sin desarrollo complejo</li>
+                        <li>Sin necesidad de licencia en la mayoría de los casos (uso gratuito con branding)</li>
+                        <li>Variedad de widgets especializados</li>
+                        <li>Responsive y mobile-friendly</li>
+                        <li>Actualizaciones automáticas de TradingView</li>
+                    </ul>
+                </div>
+                
+                <h4>Tipos de Widgets disponibles:</h4>
+                <p><em>A continuación se muestran los diferentes tipos de widgets con ejemplos funcionales en tiempo real:</em></p>
+                
+                <div class="widget-example">
+                    <strong>1. Mini Chart Widget</strong>
+                    <p>Gráfico compacto ideal para sidebars o vistas rápidas.</p>
+                    <h4>Ejemplo Funcional:</h4>
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                      <div class="tradingview-widget-container__widget"></div>
+                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                      {
+                        "symbol": "BCBA:GGAL",
+                        "width": "100%",
+                        "height": 220,
+                        "locale": "es",
+                        "dateRange": "12M",
+                        "colorTheme": "light",
+                        "trendLineColor": "rgba(41, 98, 255, 1)",
+                        "underLineColor": "rgba(41, 98, 255, 0.3)",
+                        "underLineBottomColor": "rgba(41, 98, 255, 0)",
+                        "isTransparent": false,
+                        "autosize": false,
+                        "largeChartUrl": ""
+                      }
+                      </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+                </div>
+                
+                <div class="widget-example">
+                    <strong>2. Ticker Tape Widget</strong>
+                    <p>Ticker horizontal con precios en tiempo real.</p>
+                    <h4>Ejemplo Funcional:</h4>
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                      <div class="tradingview-widget-container__widget"></div>
+                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                      {
+                        "symbols": [
+                          {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500"},
+                          {"proName": "FOREXCOM:NSXUSD", "title": "NASDAQ 100"},
+                          {"proName": "FX_IDC:EURUSD", "title": "EUR/USD"},
+                          {"description": "Bitcoin", "proName": "BITSTAMP:BTCUSD"},
+                          {"description": "Ethereum", "proName": "BITSTAMP:ETHUSD"},
+                          {"description": "Oro", "proName": "TVC:GOLD"},
+                          {"description": "Petróleo", "proName": "TVC:USOIL"},
+                          {"description": "Merval", "proName": "BCBA:IMV"},
+                          {"description": "YPF", "proName": "BCBA:YPFD"},
+                          {"description": "Galicia", "proName": "BCBA:GGAL"}
+                        ],
+                        "showSymbolLogo": true,
+                        "colorTheme": "light",
+                        "isTransparent": false,
+                        "displayMode": "adaptive",
+                        "locale": "es"
+                      }
+                      </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+                </div>
+                
+                <div class="widget-example">
+                    <strong>3. Market Overview Widget</strong>
+                    <p>Resumen de múltiples mercados en formato tabla con tabs personalizables.</p>
+                    <h4>Ejemplo Funcional:</h4>
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                      <div class="tradingview-widget-container__widget"></div>
+                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                      {
+                        "colorTheme": "light",
+                        "dateRange": "12M",
+                        "showChart": true,
+                        "locale": "es",
+                        "width": "100%",
+                        "height": "450",
+                        "largeChartUrl": "",
+                        "isTransparent": false,
+                        "showSymbolLogo": true,
+                        "showFloatingTooltip": false,
+                        "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+                        "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+                        "gridLineColor": "rgba(240, 243, 250, 0)",
+                        "scaleFontColor": "rgba(120, 123, 134, 1)",
+                        "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+                        "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+                        "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+                        "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+                        "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+                        "tabs": [
+                          {
+                            "title": "Índices",
+                            "symbols": [
+                              {"s": "FOREXCOM:SPXUSD", "d": "S&P 500"},
+                              {"s": "FOREXCOM:NSXUSD", "d": "US 100"},
+                              {"s": "FOREXCOM:DJI", "d": "Dow 30"},
+                              {"s": "INDEX:NKY", "d": "Nikkei 225"},
+                              {"s": "BCBA:IMV", "d": "Merval"}
+                            ],
+                            "originalTitle": "Índices"
+                          },
+                          {
+                            "title": "Materias Primas",
+                            "symbols": [
+                              {"s": "CME_MINI:ES1!", "d": "S&P 500"},
+                              {"s": "CME:6E1!", "d": "Euro"},
+                              {"s": "COMEX:GC1!", "d": "Oro"},
+                              {"s": "NYMEX:CL1!", "d": "Petróleo"},
+                              {"s": "NYMEX:NG1!", "d": "Gas Natural"}
+                            ],
+                            "originalTitle": "Materias Primas"
+                          },
+                          {
+                            "title": "Bonos",
+                            "symbols": [
+                              {"s": "CME:GE1!", "d": "Eurodollar"},
+                              {"s": "CBOT:ZB1!", "d": "T-Bond"},
+                              {"s": "CBOT:UB1!", "d": "Ultra T-Bond"},
+                              {"s": "EUREX:FGBL1!", "d": "Euro Bund"},
+                              {"s": "EUREX:FBTP1!", "d": "Euro BTP"}
+                            ],
+                            "originalTitle": "Bonos"
+                          },
+                          {
+                            "title": "Forex",
+                            "symbols": [
+                              {"s": "FX:EURUSD", "d": "EUR/USD"},
+                              {"s": "FX:GBPUSD", "d": "GBP/USD"},
+                              {"s": "FX:USDJPY", "d": "USD/JPY"},
+                              {"s": "FX:USDCHF", "d": "USD/CHF"},
+                              {"s": "FX:AUDUSD", "d": "AUD/USD"}
+                            ],
+                            "originalTitle": "Forex"
+                          }
+                        ]
+                      }
+                      </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+                </div>
+                
+                <div class="widget-example">
+                    <strong>4. Screener Widget</strong>
+                    <p>Herramienta de screening de activos con filtros y columnas personalizables.</p>
+                    <h4>Ejemplo Funcional:</h4>
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                      <div class="tradingview-widget-container__widget"></div>
+                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+                      {
+                        "width": "100%",
+                        "height": 490,
+                        "defaultColumn": "overview",
+                        "screener_type": "crypto_mkt",
+                        "displayCurrency": "USD",
+                        "colorTheme": "light",
+                        "locale": "es"
+                      }
+                      </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+                </div>
+                
+                <div class="widget-example">
+                    <strong>5. Stock Market Heatmap Widget</strong>
+                    <p>Mapa de calor de mercados y sectores para visualizar el rendimiento relativo.</p>
+                    <h4>Ejemplo Funcional:</h4>
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                      <div class="tradingview-widget-container__widget"></div>
+                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
+                      {
+                        "exchanges": [],
+                        "dataSource": "SPX500",
+                        "grouping": "sector",
+                        "blockSize": "market_cap_basic",
+                        "blockColor": "change",
+                        "locale": "es",
+                        "symbolUrl": "",
+                        "colorTheme": "light",
+                        "hasTopBar": false,
+                        "isDataSetEnabled": false,
+                        "isZoomEnabled": true,
+                        "hasSymbolTooltip": true,
+                        "width": "100%",
+                        "height": "500"
+                      }
+                      </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+                </div>
+                
+                <div class="widget-example">
+                    <strong>6. Economic Calendar Widget</strong>
+                    <p>Calendario económico con eventos financieros importantes y su impacto esperado.</p>
+                    <h4>Ejemplo Funcional:</h4>
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                      <div class="tradingview-widget-container__widget"></div>
+                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+                      {
+                        "colorTheme": "light",
+                        "isTransparent": false,
+                        "width": "100%",
+                        "height": "450",
+                        "locale": "es",
+                        "importanceFilter": "-1,0,1"
+                      }
+                      </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+                </div>
+                
+                <div class="docs-links">
+                    <strong>Documentación oficial:</strong><br>
+                    <a href="https://www.tradingview.com/widget-docs/getting-started/#getting-started" target="_blank">🎨 Widgets - Documentación y Getting Started</a>
+                </div>
+            </div>
+            
+            <!-- <h2>3. Análisis de Competencia - Plataformas Financieras Argentinas</h2>
+            
+            <div class="competitor-card">
+                <h3>3.1 Cocos Capital</h3>
+                <p><strong>Solución utilizada:</strong> Implementación personalizada con TradingView Advanced Charts</p>
+                
+                <p><strong>URL para análisis:</strong> <a href="https://www.cocoscapital.com.ar" target="_blank">https://www.cocoscapital.com.ar</a></p>
+                
+                <h4>Screenshots de la plataforma Cocos Capital:</h4>
+                
+                <div class="widget-example">
+                    <p><strong>Precio de la Acción Aluar</strong></p>
+                    <img src="images/cocos-composicion-cartera.png" alt="Cocos Capital - Precio Aluar" style="max-width: 400px; height: auto; border: 1px solid #e0e0e0; border-radius: 8px; margin: 10px 0; display: block;">
+                    <p style="font-size: 0.9em; color: #666; font-style: italic;">Vista del precio de la acción Aluar.</p>
+                </div>
+                
+                <div class="widget-example">
+                    <p><strong>Precio de Acciones en General</strong></p>
+                    <img src="images/cocos-rendimiento-fondo.png" alt="Cocos Capital - Precios Acciones" style="max-width: 400px; height: auto; border: 1px solid #e0e0e0; border-radius: 8px; margin: 10px 0; display: block;">
+                    <p style="font-size: 0.9em; color: #666; font-style: italic;">Lista de precios de acciones en general.</p>
+                </div>
+                
+                <div class="widget-example">
+                    <p><strong>Distribución de Inversión de un FCI</strong></p>
+                    <img src="images/iol-banco-patagonia.png" alt="Cocos Capital - Distribución FCI" style="max-width: 400px; height: auto; border: 1px solid #e0e0e0; border-radius: 8px; margin: 10px 0; display: block;">
+                    <p style="font-size: 0.9em; color: #666; font-style: italic;">Composición mostrando cómo está distribuida la inversión de un fondo común de inversión.</p>
+                </div>
+                
+                <div class="widget-example">
+                    <p><strong>Rendimiento de FCI de Cocos</strong></p>
+                    <img src="images/iol-aluar-detail.png" alt="Cocos Capital - Rendimiento FCI" style="max-width: 400px; height: auto; border: 1px solid #e0e0e0; border-radius: 8px; margin: 10px 0; display: block;">
+                    <p style="font-size: 0.9em; color: #666; font-style: italic;">Vista del rendimiento del FCI de Cocos Capital.</p>
+                </div>
+                
+                <div class="widget-example">
+                    <p><em>💡 Cocos Capital utiliza gráficos interactivos con TradingView similares a los ejemplos de Advanced Charts mostrados arriba, combinados con una interfaz de usuario personalizada para gestión de portafolio.</em></p>
+                </div>
+            </div>
+            
+            <div class="competitor-card">
+                <h3>3.2 InvertirOnline (IOL)</h3>
+                <p><strong>Solución utilizada:</strong> Solución propietaria con integración de gráficos de TradingView</p>
+                
+                <p><strong>URL para análisis:</strong> <a href="https://www.invertironline.com" target="_blank">https://www.invertironline.com</a></p>
+                
+                <h4>Screenshots de la plataforma IOL:</h4>
+                
+                <div class="widget-example">
+                    <p><strong>Portfolio Simple</strong></p>
+                    <img src="images/iol-mercado-acciones.png" alt="IOL - Portfolio Simple" style="max-width: 400px; height: auto; border: 1px solid #e0e0e0; border-radius: 8px; margin: 10px 0; display: block;">
+                    <p style="font-size: 0.9em; color: #666; font-style: italic;">Vista de portfolio simple de IOL mostrando opciones de inversión.</p>
+                </div>
+                
+                <div class="widget-example">
+                    <p><strong>Historial de Acción - Banco Patagonia</strong></p>
+                    <img src="images/iol-seleccion-cuenta.png" alt="IOL - Historial Banco Patagonia" style="max-width: 400px; height: auto; border: 1px solid #e0e0e0; border-radius: 8px; margin: 10px 0; display: block;">
+                    <p style="font-size: 0.9em; color: #666; font-style: italic;">Gráfico histórico de la acción Banco Patagonia con datos de precio y volumen.</p>
+                </div>
+                
+                <div class="widget-example">
+                    <p><strong>Total Invertido</strong></p>
+                    <img src="images/iol-portfolios.png" alt="IOL - Total Invertido" style="max-width: 400px; height: auto; border: 1px solid #e0e0e0; border-radius: 8px; margin: 10px 0; display: block;">
+                    <p style="font-size: 0.9em; color: #666; font-style: italic;">Vista para ver el total invertido en la cartera.</p>
+                </div>
+                
+                <div class="widget-example">
+                    <p><strong>Valor de Cada Acción en Mercado BYMA</strong></p>
+                    <img src="images/iol-busqueda-acciones.png" alt="IOL - Mercado BYMA" style="max-width: 400px; height: auto; border: 1px solid #e0e0e0; border-radius: 8px; margin: 10px 0; display: block;">
+                    <p style="font-size: 0.9em; color: #666; font-style: italic;">Lista de acciones mostrando el valor de cada una dentro del mercado como BYMA.</p>
+                </div>
+                
+                <div class="widget-example">
+                    <p><em>💡 IOL combina gráficos de TradingView con una solución propietaria robusta que incluye gestión de cuentas, portfolios predefinidos, y una experiencia mobile-first optimizada para el mercado argentino.</em></p>
+                </div>
+            </div> -->
+            
+        </div>
+        
+        <footer>
+            <p><strong>Documento preparado para evaluación interna - Noviembre 2025</strong></p>
+            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">Este documento contiene información técnica para la evaluación de soluciones de visualización de datos financieros</p>
+        </footer>
+    </div>
+    
+    <!-- TradingView Advanced Charts Widget -->
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    
+    <!-- Lightweight Charts removed - requires implementation with own data source -->
+    
+    <!-- Initialize TradingView Advanced Charts -->
+    <script>
+
+        // Advanced Chart 2 - Argentine Stock (Galicia)
+        new TradingView.widget({
+            "width": "100%",
+            "height": 500,
+            "symbol": "BCBA:BMA",
+            "interval": "D",
+            "timezone": "America/Argentina/Buenos_Aires",
+            "theme": "light",
+            "style": "1",
+            "locale": "es",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "allow_symbol_change": true,
+            "details": true,
+            "hotlist": true,
+            "calendar": false,
+            "studies": [
+                "STD;MACD",
+                "STD;RSI"
+            ],
+            "container_id": "tradingview_advanced_chart_2"
+        });
+    </script>
+</body>
+</html>
